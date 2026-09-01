@@ -133,8 +133,21 @@ h1{
 .sw[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff;font-weight:600}
 .sw[aria-pressed="true"] .dot{background:#fff}
 
-.duo{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:12px;align-items:stretch}
-.heart{display:grid;place-items:center;font-size:24px;color:var(--navy)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) 116px minmax(0,1fr);gap:12px;align-items:stretch}
+
+/* ─── 가운데 관계 ─────────────────────────────────────────
+   서로를 향한 화살표. 글자는 눌러서 바로 고친다. 색은 그 감정을 품은 쪽. */
+.bond{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0}
+.heart{font-size:22px;line-height:1;color:var(--navy)}
+.arrow{display:flex;flex-direction:column;align-items:center;gap:0;color:var(--c,var(--ink-3));width:100%}
+.arrow svg{display:block;overflow:visible}
+.arrow.ba svg{transform:rotate(180deg)}
+.feel{
+  width:100%;background:transparent;border:0;padding:1px 0;
+  text-align:center;font-size:12.5px;font-weight:600;color:inherit;
+}
+.feel::placeholder{color:var(--ink-3);font-weight:400}
+.feel:focus{outline:none;background:var(--field);border-radius:6px}
 .who{
   display:flex;gap:12px;min-width:0;padding:12px;
   border:1px solid var(--rule-soft);border-radius:14px;background:var(--field);
@@ -331,6 +344,7 @@ input[type=range]::-moz-range-thumb{
 }
 .ex.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
 .ex.credit{font-size:11.5px;color:var(--ink-3);border:0}
+.ex.feel{font-size:12.5px;font-weight:600;color:inherit;text-align:center}
 .ex.onote,.ex.note{color:var(--ink-2);line-height:1.6}
 .bubble .ex{font-size:13.5px;line-height:1.5}
 .exportroot .aubody{gap:6px}
@@ -350,7 +364,9 @@ input[type=range]::-moz-range-thumb{
 
 @media (max-width:760px){
   .duo{grid-template-columns:minmax(0,1fr)}
-  .heart{height:26px}
+  .bond{flex-direction:row;gap:12px;padding:2px 0}
+  .arrow{width:auto}
+  .feel{min-width:64px}
   .who[data-side="b"]{flex-direction:row}
   .who[data-side="b"] .colorrow{flex-direction:row}
   .who[data-side="b"] .bubble::before{right:auto;left:-17px;border-left-color:transparent;border-right-color:var(--c)}
@@ -411,6 +427,7 @@ input[type=range]::-moz-range-thumb{
       <li>넣은 그림은 잘리지 않고 통째로 들어갑니다. AU 카드는 그림 비율대로 자리를 잡고, 오리진 사진은 틀에 맞춰 담깁니다.</li>
       <li>사진은 끌어서 옮기고 휠이나 슬라이더로 확대합니다 — 틀을 꽉 채우고 싶을 때 쓰세요. 두 번 누르면 원위치.</li>
       <li>이름 옆 알약 버튼으로 말풍선을 켜고 끕니다. 말풍선 안을 눌러 한마디를 적으세요.</li>
+      <li>가운데 화살표의 글자를 눌러 서로에게 품은 감정을 적습니다. 화살표 색은 그 감정을 품은 쪽의 색입니다.</li>
       <li>AU 카드는 이미지 한 장 + 설명 한 칸. 카드 아래 ◀ ▶ 로 순서를, ⧉ 로 복제, ✕ 로 삭제합니다.</li>
       <li>그림 아래 ⓒ 줄에 출처를 적어 두세요. 오리진은 두 사진의 출처를 한 줄에 함께 적습니다.</li>
       <li><b>그라데이션</b>을 고르고 색 두 개를 정하면 배경과 글자색이 그 색에 맞춰 따라옵니다.</li>
@@ -509,6 +526,7 @@ function seed(){
       title:"오리진",
       note:"본편에서 두 사람이 서 있는 자리. 관계의 바닥이 되는 한두 줄.",
       credit:"",
+      ab:"사랑함", ba:"좋아함",
       a:{name:"인물 A", line:"먼저 다가가는 쪽", color:"#3E8BD6", img:null, iz:1, ix:0, iy:0,
          say:"오늘 자리, 네 옆으로 맡아 뒀어.", bub:true},
       b:{name:"인물 B", line:"물러서다 붙잡는 쪽", color:"#D64F8B", img:null, iz:1, ix:0, iy:0,
@@ -548,6 +566,8 @@ function normalize(d){
   o.title  = typeof o.title  === "string" ? o.title  : "오리진";
   o.note   = typeof o.note   === "string" ? o.note   : "";
   o.credit = typeof o.credit === "string" ? o.credit : "";
+  o.ab = typeof o.ab === "string" ? o.ab : "사랑함";   // A가 B에게 품은 것
+  o.ba = typeof o.ba === "string" ? o.ba : "좋아함";   // B가 A에게 품은 것
   o.a = normPerson(o.a, "인물 A", "#3E8BD6");
   o.b = normPerson(o.b, "인물 B", "#D64F8B");
   d.aus = Array.isArray(d.aus) ? d.aus : [];
@@ -692,6 +712,27 @@ function swHTML(side){
     '<span class="dot"></span><span class="nm">' + esc(short(c.name, 8)) + ' 말풍선</span></button>';
 }
 
+/* 두 사람 사이의 화살표 한 벌 — 위는 A→B, 아래는 B→A(그림을 반 바퀴 돌린다) */
+const ARROW =
+  '<svg viewBox="0 0 76 22" width="76" height="22" aria-hidden="true">' +
+    '<path d="M5 17 Q 38 0 70 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<path d="M70 12 l-5.8 -6.9 M70 12 l-9 1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+  '</svg>';
+function bondHTML(){
+  const o = O();
+  return '<div class="bond">' +
+    '<div class="heart">♥</div>' +
+    '<div class="arrow ab" data-dir="ab" style="--c:' + o.a.color + '">' +
+      '<input type="text" class="feel" data-o="ab" value="' + esc(o.ab) + '" placeholder="감정" autocomplete="off">' +
+      ARROW +
+    '</div>' +
+    '<div class="arrow ba" data-dir="ba" style="--c:' + o.b.color + '">' +
+      ARROW +
+      '<input type="text" class="feel" data-o="ba" value="' + esc(o.ba) + '" placeholder="감정" autocomplete="off">' +
+    '</div>' +
+  '</div>';
+}
+
 function renderOrigin(){
   const o = O();
   $("#origin").innerHTML =
@@ -700,7 +741,7 @@ function renderOrigin(){
       '<input type="text" class="otitle" data-o="title" value="' + esc(o.title) + '" placeholder="오리진" autocomplete="off">' +
       swHTML("a") + swHTML("b") +
     '</div>' +
-    '<div class="duo">' + whoHTML("a") + '<div class="heart">♥</div>' + whoHTML("b") + '</div>' +
+    '<div class="duo">' + whoHTML("a") + bondHTML() + whoHTML("b") + '</div>' +
     '<div class="creditrow">' +
       '<input type="text" class="credit" data-o="credit" value="' + esc(o.credit) + '" ' +
       'placeholder="ⓒ 두 사진의 출처 · 그린이" autocomplete="off"></div>' +
@@ -781,6 +822,8 @@ $("#origin").addEventListener("input", e => {
     if(who) who.style.setProperty("--c", c.color);
     const sw = $('.sw[data-bub="' + side + '"]');
     if(sw) sw.style.setProperty("--c", c.color);
+    const ar = $('.arrow[data-dir="' + (side === "a" ? "ab" : "ba") + '"]');
+    if(ar) ar.style.setProperty("--c", c.color);
     save(); return;
   }
   const zk = el.dataset.zoom;
@@ -981,7 +1024,8 @@ function shrink(file, maxW, cb){
 /* ─── PNG로 저장 ─────────────────────────────────────────
    화면을 통째로 복제해 SVG(foreignObject) 안에서 다시 그린 뒤 캔버스로 굽는다.
    웹폰트는 그림 안으로 들어가지 못해 시스템 글꼴로 그려진다. */
-const EX_DROP = ".toolbar,.tools,.zoom,.zoomrow,.hint,.aufoot,.addau,.tips,.colorrow,.bubble .x";
+const EX_DROP = ".toolbar,.tools,.zoom,.zoomrow,.hint,.aufoot,.addau,.tips,.colorrow,.bubble .x" +
+                ",.stats,.tagline";   // 개수 칸과 안내 문구는 그림에 넣지 않는다
 function exportPNG(){
   const src = $(".wrap");
   const W = Math.max(920, Math.ceil(src.getBoundingClientRect().width));
@@ -1086,6 +1130,8 @@ $("#copyBtn").addEventListener("click", () => {
   out += "\n## " + (o.title || "오리진") + "\n";
   out += "- " + o.a.name + (o.a.line ? " — " + o.a.line : "") + "\n";
   out += "- " + o.b.name + (o.b.line ? " — " + o.b.line : "") + "\n";
+  if(o.ab.trim()) out += "- " + o.a.name + " → " + o.b.name + " : " + o.ab.trim() + "\n";
+  if(o.ba.trim()) out += "- " + o.b.name + " → " + o.a.name + " : " + o.ba.trim() + "\n";
   if(o.a.bub && o.a.say.trim()) out += "  " + o.a.name + ': "' + o.a.say.trim() + '"\n';
   if(o.b.bub && o.b.say.trim()) out += "  " + o.b.name + ': "' + o.b.say.trim() + '"\n';
   if(o.note.trim()) out += "> " + o.note.trim() + "\n";
