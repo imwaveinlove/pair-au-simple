@@ -1084,17 +1084,34 @@ $("#picker").addEventListener("change", e => {
     save(); render();
   });
 });
+/* 투명한 곳이 있는지 작게 줄여서 살펴본다 — JPEG로 구우면 투명이 검정이 되므로 */
+function hasAlpha(im){
+  const w = Math.max(1, Math.min(64, im.width));
+  const h = Math.max(1, Math.round(w * im.height / im.width));
+  const cv = document.createElement("canvas");
+  cv.width = w; cv.height = h;
+  const g = cv.getContext("2d");
+  g.drawImage(im, 0, 0, w, h);
+  try{
+    const d = g.getImageData(0, 0, w, h).data;
+    for(let i = 3; i < d.length; i += 4) if(d[i] < 250) return true;
+  }catch(err){ return false; }
+  return false;
+}
 function shrink(file, maxW, cb){
   const rd = new FileReader();
   rd.onload = () => {
     const im = new Image();
     im.onload = () => {
-      const sc = Math.min(1, maxW / im.width);
+      // 투명 그림은 PNG로 지켜 담고(대신 조금 더 줄여서 저장 공간을 아낀다), 나머지는 JPEG
+      const alpha = hasAlpha(im);
+      const lim = alpha ? Math.min(maxW, 720) : maxW;
+      const sc = Math.min(1, lim / im.width);
       const w = Math.max(1, Math.round(im.width * sc)), h = Math.max(1, Math.round(im.height * sc));
       const cv = document.createElement("canvas");
       cv.width = w; cv.height = h;
       cv.getContext("2d").drawImage(im, 0, 0, w, h);
-      try{ cb(cv.toDataURL("image/jpeg", 0.82)); }
+      try{ cb(alpha ? cv.toDataURL("image/png") : cv.toDataURL("image/jpeg", 0.82)); }
       catch(err){ cb(rd.result); }
     };
     im.onerror = () => notify("이 이미지는 읽을 수 없습니다");
