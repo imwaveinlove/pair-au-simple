@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB80lEQVR42u1WvUoDQRDOI/gI9wRyj3C9RUqtJGgvPoBFhBQWgqCCIoH4A0FBRAki/nGNIpoiEAgmiBAFQatYiO04397t3iW3F29NTHUfDEx2Z76ZnZndXCaTIkWKhKDxpRUWN4GdC9thB7doeq9GM2Vi3e5jZwsb2LLPsIKP0dR2iZofJBBDrpIEYAsf9h385CCqvpDC2yfR+aPLJ82LfQh0rGFPAj5eEpZJQNcX2//tiJLqgFN2vmtCZHV64bXMUe3x+eOCRxxjg5tAx8WxwoHzXcEDBE4oLUpqIrIdHocTYZeViEvguf1eEs4gKlwQzR+bCXzgyxyCq08ClioRenlSF/uN5iu1166J5o6Idnm4Ky0zgQ/7ggNcAuBGDN11FlVYOFWlg9PVMp8kWzQPLoV9waESADdihGegKwncY7+HjeoTVQoH3QlAX731Srz1EKxDxxr2euzBAS41Gxwj0/cl869K/fC+E0lAJrF4GT0t1jS24ABX7xX/FXfVlnuzfqZvAU6KHiMoBDrWNC0AB7iMX0E4fU1s6BNAwFw5SAC6blDZFxx/SkC9hAMOoXwJB/k/sHnAXNrkPiYNDFv4JO13wkRyTJ7XDmB4EGHDtv/3YZItOjS7X4pcQ6zx3qi+jiyeeocmd2pCoA/rAyRFihSjxg+0hanWT6+eoAAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA6UlEQVR42t1SzQoBURj1CB7BE0weYV5AeR1blLFgIcluZEkaUROajPxM2NgoWVlZmyTZHd+5Y2xMmix9derr/Nz73Z9E4j8LmuHG4aLDlamF6wNobSw0likF9uREiw7lR6YyaYaOs493+feTQljU6KFXMu/RQv2WaZrwxF+cREM05QlLFuMCaZQdcMRFzwOqc2B4jIZoysPjMKMZyfAIWYwPbt8WsbYKUJ4B7V0A9i9eecTLzMddrAfbwMjdGMzZAdiTE42e769QcCx09peP8cmJFu8pS9M06t4O3T0U2Av3y4fS1U3/dz0B9F80Lwd7fKMAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFV0lEQVR42u3dwYsbVRzA8f0T9k/Yv8C/IVdB6FGPpV48SQ6eeoo3vfYgWgpbwRZhQbYoXlRycRGsIIiCPXr0r4h57UI3b35ufzsz2bxMPh94F2WTzsz7JrzJZHJ0BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPS3euuT2XqsEmMxgW1dJLd1ZmYIQAAIQAAIQAAIQAAIQAAIQAAIQAAIQAAIQADs8WS/93SV8tnPezVRwm0t25BR9okoBCAAAQhAAAIQgAAEsH+T/fhyErwe73wxf3lwr45Pf8xNimd/rDp/Wx6vfo718za7rWUbMso+aXRbuY1X+6xGXikPaVsxKQSASSEATAoBUE2CcRa8WdFi8clv8/X/mW2Me0/rxeOs93aVx6ofvzznLrY1WBibibsLYLuvgCO/eh76diEAASAAASAAAUxqIp4Enxhmx/EkA4gWkPVC9v/Gthe3jQQQfpqdHyctBZC95nzU02pNBzBV4wYwGzBvFgIQgAAEIAABCEAAArjVT18XG+Oj8+XL6877jPcen9aPd01km6N+rOylv/RX9nG934NjkzqG5dj3nTdlznWfd7abV/vsly4GvKKErwK0ITg2W3/Hjr+stBAAAhAAAhAAArjxp7mLN45owfv8n1EXVQKYaABjnrQocy63MD4Z95TUkFf7JAFMNIBtG3IXDwEgAAEgAAEggOkE8Pe/3cuSjdwo+04Aex5AOVvQ/3qTwx7Zs3sCEIAABCAAAQhAAAIQwEC/PH+xrEcqgGjB++E3q9WDC6PPKPsuszAOjk14DAWQDqAzUgFEr/Z3Hq1W374w+oyy7zLvCnEA3WMoAAEIQAACEIAABCCA1gLI3aSofI8z8zM80c8LJT9ZjHbeX19ddEZqwfvwVxO57yj7LrEwjo5N7wCiExnZ+fXq++Xb/Umn9BdiohqTp9WinZd6V/Bqv5N3hfTx6nvaOju/mvpGmAAEIAABCEAAAhDAxAMY+WxRtPMePv6uMwTQRgDRsRn1LFA82QUgAAEIQAACEIAABCAAAQhgZ3eMXux9APPz7uOV/9b3koHyqelYk648Vt9tHbJdbQfQ+O8DCEAAAhCAAAQgAAEIQAACmGwAY/9uWDNngaLJE40xJ/uQKKIxZLKPHcAUfhBPAAIQgAAEIAABCEAA1wVwdz2WfUYzAXz8w6vHfNPYxdcuy3Nm/m1lG9oJYNlz3D06JC6FmOalEEcIQAAIQAAIQADcIIAnZz91RjMBRPfPOfszPnOTGfXflcdq5X5HQQDRsRHAyAE0/aX47KUQ2dN+Y14K0dCX4s1sAQgAAQgAAQiAmwQQ3hy3lUnxwVn8CWy9cM18cltG/XfRJ9LlORsJIHtzXDN7QACpV86WToNG7wrZv9237Upez2VmC0AACEAACEAAXBPAoh6X3y+oR7sTpSxcy7X4V8dNvodwdYx9SfP4AXSOTXQMzeyRuRaojQDMRAEIAAEIAAEIgFsMYHPx9fbnp00vIPdtRAv5so+r/W4mthPEzLvC1s/4zMw0AQgAAQgAAQiAhgI4vozg9bjzaLY+mJvj/vfzrd9AqvXFbb39ZZ/U+6nsu3p/rvexmTbFd4qxbyHY8ohv+eiVXQACQAACQAAC4LAWy/Pz7mL5/a9Pm7gT9JA7RpdtqLerbKvFLYlQFk38FsCw3wxYOJIIAAQAAoB0ACedxeKDi+5i+d0vf9/qYjla3JbnrP8d5d/WXdyeOJJsO5Tlrf9Q9vo57XkEAAIAAUDzoaTuqmZPIQAQAAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbfgPcVNyWxzoTYAAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAF/UlEQVR42u3dz4ocVRSA8XmEPMI8QfAR+g1cBcSFDD7BCK6Ci9GFzEaULFyEQIKJbrIZUQZhDO3CUXQWEVEwEBiCiLiKCRrdlXWMZLpuXafvVKqrq3t+H5xFSNe/cz66p+qee2tjAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnBOqi7sX6pjMixW+vklBXGDC+ggdBa3mxQpfX1UQEyYQmtAgNKFBaEKD0IQmNKFBaEKD0IQGoQmNXIGnjWK++lFVRFuCnRFe207rPEuIHDS3mzKF0IQGoQkNQhP6XN/w7TRi9+C4ev/L6ll8/H1Z0We3iXh9b9ra98XdzQGvbbN1/Din9DxLiBzMbhM5al+bG8dRfmMdPah6IQq/xKcF2aczpQLPI3K0Ar9IhCY0oQlNaEITmtDo7QnGScTNTRRnNh7/3U/Rf/m9au374ZO79f9Mn8XRg2nrnC7ubhVcx1Zru9jX7L7jWOnx45z6IHKU7vvpjWLjnBi3eKEX84018DfdQn9ZevxFYhyhCQ1CE3o8gm0WTqPvZVr96IT+6beno3Cz8dZn1+v/mZwa8Zl0u9jXGghdumxEJjbHIPROYftiL08LRif0OtGf0JOOTuwQmtCEJjQITWhCr5vQxd1fJfHSjevJvrb+JzHN46X7WfaTgXUicpnmt6Aj779BopPPRG27ODF0d2OvQ7EF/bmde3/RHwXfop37z5fdakBoQhOa0IQmNKEJ/ZxCFz2t6HqiZRB6VYV+2h24GLrOhSQ0CE1oQhOa0IQm9NmETqfsi3aULu1A6BEI3U6C6FpLQhOa0IQmNKEJTWhCj1boP/786+HXR/ems/Hra7eP5wodNzfpVKa371TVlUNxWkSO0rzlbhST/EdN0jpF7Qid8Ojxk6pOTiN+fmOvmit0brg0CvbJPXFaRI5K2hiSz0RN0jpF7QhNaEITmtCELhd6K7OkVTNeuVm2NFWH5atyQt9/76B6dOlaI1r7fqe+H3nxWjOufkvYeRE5SvMWuUzym+Y/atJJ6NyyaiWfCeeaHr47fPtohxbTnNC5aO17e4+cfcV2+xexpCZFQud+SUs+M4p+aEITmtCEJjShCU3onoWOu9B5nV0FSw3khP78i++qvf2vGkHoYYVO8x816SR0bomENPIjvAMLnYueHttFAq/e+LQRhB5W6DT/UZPeHtst+5XOhCY0oQlNaEITmtDDv6Sp13l/gwudKV7RdjGiNrtN/Lsvobrue4E5GVjoka4+SmhCE5rQhCY0oQm9kBvF09dwLohHt74ZVuhon4xtnzfePOhP6NhXH+fUtX22q9B17TotpVCw9vRY3ox15jlu0Zq49KccJec6ZK91rmc5F8t+ynHpWqd5jRurAqEJTWhCE5rQhCb0cDeKZ4rj3f3tpQtdMv3/9g/DCR3HKjmnJQsdtetS8411pk7MxND3ag59R+02QGhCE5rQhF5dofcPjqoPb99pxNKFjun/s3+/5pZM+ODu/L974zNd9j2w0Gn+oyaE7ij0KOcUlgxP54bVS857kcPqC5xTSGhCE5rQhCY0oQlN6PEI/eOtw38XB5yNpQvdV0fc0J18HYVO8x81IXRHobMCj+2xXW54uuScct/iy141teCXJbf6KKEJTWhCE5rQhCY0oVesNdXQ90KFZhyhCQ1CE5rQhCb0WgjdnPr+8s1pa0Ai18km2h2Bad4il0l+Gbccwb3WrZ/5igQmNKFBaEKD0IQ+H0JvtqbIXzmc1EU7icv72623pg7dyTZ0R2B6vZGD2ZxEjtpLC2wyajWkn5yrx335IWzD04QmNAhNaCxc6BfqmDZie29aF78ZJUsNjGFApL0UWPM64trS661zwITzJ/74v8UNT4PQIDShQWhCY1xCNzv5tvd2aomacXn/eLCXBsWx0uPHOemIQ4/STwd7rVt9LBkHoQFCg9CExjm6uZy3xoWbORAaIDRAaOBE6ElrkKYdE5kCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPTMP2x6ZrQCbUwpAAAAAElFTkSuQmCC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<title>페어 AU @whitecotchi</title>
+
+<style>
+/* ─── tokens ─────────────────────────────────────────────────
+   서사 페이지와 같은 팔레트. 백코가 바닥값, 나머지는 data-theme으로 덮는다. */
+:root{
+  --paper:#FFEAF3; --field:#FFF6FB; --surface:#FFFFFF;
+  --ink:#4E2242; --ink-2:#7A4A6B; --ink-3:#9E6A8C;
+  --rule:#F6C9E0; --rule-soft:#FBE0EE;
+  --navy:#FF2D87; --navy-ink:#FFFFFF; --danger:#D6246B;
+  --body-bg:radial-gradient(126% 92% at 50% 0%,#FFF5FB 0%,#FFE7F4 44%,#F0E4FC 100%);
+  --shadow:0 1px 2px rgba(122,40,92,.07), 0 10px 26px -12px rgba(206,64,142,.36);
+  --shadow-lift:0 2px 8px rgba(122,40,92,.12), 0 20px 44px -16px rgba(206,64,142,.46);
+  --r:10px;
+  color-scheme:light;
+}
+:root[data-theme="blooming"]{
+  --paper:#E4F2FA; --field:#F4FBFE; --surface:#FFFFFF;
+  --ink:#123742; --ink-2:#376274; --ink-3:#55848F;
+  --rule:#BEDFEC; --rule-soft:#DBEFF7;
+  --navy:#0E90B4; --navy-ink:#FFFFFF; --danger:#C0374C;
+  --body-bg:radial-gradient(126% 92% at 50% 0%,#F3FCFE 0%,#DCEFFA 44%,#D9F5EE 100%);
+  --shadow:0 1px 2px rgba(18,55,66,.07), 0 10px 26px -12px rgba(30,120,150,.34);
+  --shadow-lift:0 2px 8px rgba(18,55,66,.12), 0 20px 44px -16px rgba(30,120,150,.44);
+}
+:root[data-theme="bluelemon"]{
+  --paper:#FDF1D2; --field:#FCFBF4; --surface:#FFFFFF;
+  --ink:#263A44; --ink-2:#476574; --ink-3:#617F8C;
+  --rule:#CFDFE4; --rule-soft:#E6EFF1;
+  --navy:#1B7CA6; --navy-ink:#FFFFFF; --danger:#BF4437;
+  --body-bg:linear-gradient(172deg,#FEF6E0 0%,#FCEBBE 26%,#DCEEE4 62%,#AFDAEB 100%);
+  --shadow:0 1px 2px rgba(30,58,68,.07), 0 10px 26px -12px rgba(28,110,144,.34);
+  --shadow-lift:0 2px 8px rgba(30,58,68,.12), 0 20px 44px -16px rgba(28,110,144,.44);
+}
+/* data-theme="custom" — 사용자가 고른 두 색으로 만든 그라데이션.
+   나머지 값은 그 두 색에서 뽑아 :root에 직접 얹는다(customVars). */
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--body-bg); background-attachment:fixed; color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--navy);outline-offset:2px;border-radius:4px}
+
+/* ─── shell ──────────────────────────────────────────────── */
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px;display:flex;flex-direction:column;gap:18px}
+header.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px}
+.brand{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+}
+.eyebrow.handle{text-transform:none;letter-spacing:.06em;font-size:12px}
+h1{
+  font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;
+  font-variation-settings:"wdth" 88,"opsz" 48;
+  font-weight:700;font-size:clamp(30px,4.4vw,46px);line-height:1.02;
+  margin:0;letter-spacing:-.02em;
+}
+.tagline{color:var(--ink-2);font-size:14px;max-width:54ch;margin:0}
+.stats{display:flex;border:1px solid var(--rule);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.stat{padding:9px 16px;display:flex;flex-direction:column;gap:1px;min-width:74px}
+.stat + .stat{border-left:1px solid var(--rule-soft)}
+.stat .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.stat .v{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+
+/* ─── toolbar ────────────────────────────────────────────── */
+.toolbar{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  padding:10px 12px;background:var(--surface);
+  border:1px solid var(--rule);border-radius:var(--r);
+}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;background:var(--field);border:1px solid var(--rule);
+  border-radius:8px;cursor:pointer;font-size:13.5px;font-weight:500;
+  transition:background .12s, border-color .12s, transform .08s;
+}
+.btn:hover{background:var(--surface);border-color:var(--ink-3)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:5px 10px;font-size:12.5px}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:#fff}
+.btn.danger:hover{filter:brightness(1.06);border-color:var(--danger)}
+.sep{width:1px;height:22px;background:var(--rule)}
+.spacer{flex:1}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--field)}
+.seg button{padding:7px 12px;background:transparent;border:0;cursor:pointer;font-size:13px;color:var(--ink-2)}
+.seg button + button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--navy-ink);font-weight:600}
+.saved{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.lab{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+
+/* ─── 오리진 ─────────────────────────────────────────────── */
+.origin{
+  padding:16px;background:var(--surface);border:1px solid var(--rule);
+  border-radius:var(--r);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:14px;
+}
+.obar{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.obar .otitle{
+  background:transparent;border:0;border-bottom:1px dashed var(--rule);
+  font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;
+  font-size:21px;font-weight:700;letter-spacing:-.01em;padding:2px 0;min-width:120px;flex:1;
+}
+.obar .otitle:focus{outline:none;border-bottom-color:var(--navy)}
+/* 말풍선 스위치 — 사람마다 하나씩 */
+.sw{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 11px 5px 9px;
+  background:var(--field);border:1px solid var(--rule);border-radius:999px;
+  cursor:pointer;font-size:12.5px;color:var(--ink-2);max-width:170px;
+}
+.sw .dot{width:9px;height:9px;border-radius:50%;background:var(--rule);flex:none}
+.sw .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sw[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff;font-weight:600}
+.sw[aria-pressed="true"] .dot{background:#fff}
+
+.duo{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:12px;align-items:stretch}
+.heart{display:grid;place-items:center;font-size:24px;color:var(--navy)}
+.who{
+  display:flex;gap:12px;min-width:0;padding:12px;
+  border:1px solid var(--rule-soft);border-radius:14px;background:var(--field);
+}
+.who[data-side="b"]{flex-direction:row-reverse}
+.who .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+.who input[type=text]{
+  background:var(--surface);border:1px solid var(--rule-soft);border-radius:8px;padding:7px 9px;width:100%;
+}
+.who input.big{font-size:16.5px;font-weight:600}
+.who input[type=text]:focus{outline:none;border-color:var(--c)}
+.colorrow{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-3)}
+.who[data-side="b"] .colorrow{flex-direction:row-reverse}
+input[type=color]{
+  -webkit-appearance:none;appearance:none;width:30px;height:24px;padding:0;
+  background:transparent;border:1px solid var(--rule);border-radius:7px;cursor:pointer;
+}
+input[type=color]::-webkit-color-swatch-wrapper{padding:2px}
+input[type=color]::-webkit-color-swatch{border:0;border-radius:5px}
+input[type=color]::-moz-color-swatch{border:0;border-radius:5px}
+.onote{
+  background:var(--field);border:1px solid var(--rule-soft);border-radius:10px;
+  padding:9px 11px;width:100%;resize:vertical;min-height:56px;line-height:1.6;color:var(--ink-2);
+}
+.onote:focus{outline:none;border-color:var(--navy);background:var(--surface)}
+
+/* ─── 말풍선 ─────────────────────────────────────────────── */
+.bubble{
+  position:relative;background:var(--surface);border:1.5px solid var(--c);
+  border-radius:16px;padding:8px 11px;box-shadow:var(--shadow);
+}
+.bubble textarea{
+  width:100%;border:0;background:transparent;resize:none;overflow:hidden;
+  font-size:13.5px;line-height:1.5;min-height:21px;padding:0;display:block;
+}
+.bubble textarea:focus{outline:none}
+.bubble textarea::placeholder{color:var(--ink-3)}
+/* 꼬리는 두 겹 — 바깥이 테두리, 안쪽이 배경 */
+.bubble::before,.bubble::after{content:"";position:absolute;top:14px;border:8px solid transparent}
+.who[data-side="a"] .bubble::before{left:-17px;border-right-color:var(--c)}
+.who[data-side="a"] .bubble::after{left:-14px;border-right-color:var(--surface)}
+.who[data-side="b"] .bubble::before{right:-17px;border-left-color:var(--c)}
+.who[data-side="b"] .bubble::after{right:-14px;border-left-color:var(--surface)}
+.bubble .x{
+  position:absolute;top:-9px;right:-9px;width:20px;height:20px;border-radius:50%;
+  border:1px solid var(--rule);background:var(--surface);color:var(--ink-3);
+  cursor:pointer;font-size:10px;line-height:1;display:none;place-items:center;padding:0;
+}
+.bubble:hover .x{display:grid}
+.bubble .x:hover{color:var(--danger);border-color:var(--danger)}
+
+/* ─── 이미지 자리 ─────────────────────────────────────────── */
+.slot{
+  position:relative;display:grid;place-items:center;
+  background:var(--surface);border:1px dashed var(--rule);border-radius:12px;
+  cursor:pointer;overflow:hidden;color:var(--ink-3);font-size:11px;text-align:center;padding:4px;
+}
+.slot:hover{border-color:var(--c,var(--navy));color:var(--ink-2)}
+.slot img{display:block}
+.tools{position:absolute;top:5px;right:5px;display:none;gap:4px;z-index:2}
+.slot:hover .tools{display:flex}
+.tools button{
+  width:22px;height:22px;border-radius:6px;border:0;cursor:pointer;font-size:11px;
+  background:rgba(0,0,0,.58);color:#fff;display:grid;place-items:center;
+}
+.tools button:hover{background:rgba(0,0,0,.8)}
+.facebox{display:flex;flex-direction:column;gap:5px;align-items:center;flex:none}
+.slot.face{
+  width:104px;height:130px;padding:0;background:var(--field);
+  border-style:solid;border-color:var(--rule-soft);touch-action:none;
+}
+.slot.face.empty{border-style:dashed;background:var(--surface)}
+/* 넣은 그림은 잘라내지 않는다 — 통째로 보이게 담고, 채우고 싶으면 끌거나 확대한다 */
+.slot.face img,.slot.cover img{
+  position:absolute;left:50%;top:50%;width:100%;height:100%;object-fit:contain;
+  transform-origin:center;cursor:grab;user-select:none;-webkit-user-drag:none;
+}
+.slot.grabbing img{cursor:grabbing}
+.zoom{width:104px}
+.hint{font-size:10.5px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;
+  height:14px;margin:0;background:transparent;cursor:pointer;
+}
+input[type=range]::-webkit-slider-runnable-track{
+  height:6px;border-radius:3px;
+  background:linear-gradient(90deg,var(--c,var(--navy)) calc(var(--p,50) * 1%),var(--rule-soft) 0);
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;margin-top:-4px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--c,var(--navy));border:2px solid var(--surface);box-shadow:0 0 0 1px var(--rule);
+}
+input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:var(--rule-soft)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:3px;background:var(--c,var(--navy))}
+input[type=range]::-moz-range-thumb{
+  width:12px;height:12px;border:2px solid var(--surface);border-radius:50%;background:var(--c,var(--navy));
+}
+
+/* ─── AU 카드 ────────────────────────────────────────────── */
+.aubar{display:flex;align-items:center;gap:10px;padding:2px}
+.aubar .line{flex:1;height:1px;background:var(--rule)}
+.aus{display:grid;grid-template-columns:repeat(auto-fill,minmax(292px,1fr));gap:14px}
+.au{
+  display:flex;flex-direction:column;
+  background:var(--surface);border:1px solid var(--rule);border-radius:14px;
+  box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .14s;
+}
+.au:hover{box-shadow:var(--shadow-lift)}
+/* 카드의 그림 자리는 고정 크기. 그림은 이 안에 통째로 들어가고, 확대·이동으로 맞춘다 */
+.au .slot.cover{
+  width:100%;height:196px;background:var(--field);
+  border:0;border-bottom:1px solid var(--rule-soft);border-radius:0;touch-action:none;
+}
+.au .slot.cover.empty{background:var(--surface);border-bottom:1px dashed var(--rule)}
+.au .zoomrow{padding:8px 12px 0;display:flex;align-items:center;gap:8px}
+.au .zoomrow input[type=range]{flex:1}
+.aubody{padding:12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.aubody .no{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  color:var(--ink-3);text-transform:uppercase;
+}
+.aubody input,.aubody textarea{
+  background:var(--field);border:1px solid var(--rule-soft);border-radius:8px;padding:7px 9px;width:100%;
+}
+.aubody input.big{font-size:16px;font-weight:600}
+.aubody input.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
+.aubody textarea{resize:vertical;min-height:92px;line-height:1.6;color:var(--ink-2);flex:1}
+.aubody input:focus,.aubody textarea:focus{outline:none;border-color:var(--navy);background:var(--surface)}
+.aufoot{
+  display:flex;align-items:center;gap:4px;padding:8px 10px;
+  border-top:1px solid var(--rule-soft);background:var(--field);
+}
+.mini{
+  width:28px;height:24px;display:grid;place-items:center;cursor:pointer;
+  background:transparent;border:1px solid transparent;border-radius:6px;
+  color:var(--ink-3);font-size:12px;line-height:1;
+}
+.mini:hover{background:var(--surface);border-color:var(--rule);color:var(--ink)}
+.mini:disabled{opacity:.3;cursor:default}
+.mini.del:hover{color:var(--danger);border-color:var(--danger)}
+.addau{
+  display:grid;place-content:center;justify-items:center;gap:6px;min-height:240px;
+  border:1px dashed var(--rule);border-radius:14px;background:transparent;
+  cursor:pointer;color:var(--ink-3);font-size:13.5px;
+}
+.addau:hover{border-color:var(--navy);color:var(--navy);background:var(--surface)}
+.addau b{font-size:26px;font-weight:400;line-height:1}
+
+.tips{
+  padding:14px 16px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--r);
+  color:var(--ink-2);font-size:13px;
+}
+.tips h3{margin:0;font-size:13px;letter-spacing:.02em}
+.tips ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+
+/* ─── 그라데이션 고르기 ──────────────────────────────────── */
+.gradrow{
+  display:inline-flex;align-items:center;gap:7px;padding:4px 8px;
+  background:var(--field);border:1px solid var(--rule);border-radius:8px;
+}
+.gradrow .arrow{color:var(--ink-3);font-size:11px}
+.gradrow .swap{
+  width:25px;height:23px;padding:0;border:1px solid var(--rule);border-radius:6px;
+  background:var(--surface);color:var(--ink-2);cursor:pointer;font-size:11px;
+}
+.gradrow .swap:hover{border-color:var(--ink-3);color:var(--ink)}
+
+/* ─── 출처 한 줄 ─────────────────────────────────────────── */
+.creditrow{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 12px 0}
+.origin .creditrow{padding:0 2px}
+.credit{
+  flex:1;min-width:0;background:transparent;border:0;
+  border-bottom:1px dashed var(--rule-soft);
+  font-size:11.5px;color:var(--ink-3);padding:2px 0;text-align:center;
+}
+.credit::placeholder{color:var(--ink-3);opacity:.65}
+.credit:focus{outline:none;border-bottom-color:var(--navy);color:var(--ink-2)}
+
+/* ─── PNG로 굳힐 때 ──────────────────────────────────────
+   화면을 그대로 복제해 SVG 안에서 다시 그린다. 입력칸은 글자로 바뀐다. */
+.exportroot{
+  background:var(--body-bg);background-attachment:scroll;color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+  font-size:15px;line-height:1.55;
+}
+.exportroot .wrap{padding:26px 22px 30px}
+.ex{white-space:pre-wrap;word-break:break-word;padding:1px 0}
+.ex:empty{display:none}
+.ex.big{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.ex.otitle{
+  font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;
+  font-size:21px;font-weight:700;letter-spacing:-.01em;
+}
+.ex.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
+.ex.credit{font-size:11.5px;color:var(--ink-3);border:0}
+.ex.onote,.ex.note{color:var(--ink-2);line-height:1.6}
+.bubble .ex{font-size:13.5px;line-height:1.5}
+.exportroot .aubody{gap:6px}
+.exportroot .who .col{gap:7px}
+.exportroot .creditrow{padding-top:9px}
+
+/* ─── 확인창 ─────────────────────────────────────────────── */
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(20,10,20,.42);padding:20px}
+.modal[hidden]{display:none}
+.sheet{
+  background:var(--surface);border:1px solid var(--rule);border-radius:14px;
+  box-shadow:var(--shadow-lift);padding:20px;max-width:420px;width:100%;
+  display:flex;flex-direction:column;gap:16px;
+}
+.sheet p{margin:0;white-space:pre-line;line-height:1.6}
+.sheet .row{display:flex;justify-content:flex-end;gap:8px}
+
+@media (max-width:760px){
+  .duo{grid-template-columns:minmax(0,1fr)}
+  .heart{height:26px}
+  .who[data-side="b"]{flex-direction:row}
+  .who[data-side="b"] .colorrow{flex-direction:row}
+  .who[data-side="b"] .bubble::before{right:auto;left:-17px;border-left-color:transparent;border-right-color:var(--c)}
+  .who[data-side="b"] .bubble::after{right:auto;left:-14px;border-left-color:transparent;border-right-color:var(--surface)}
+}
+@media print{
+  body{background:#fff}
+  .toolbar,.tools,.zoom,.zoomrow,.hint,.aufoot,.addau,.modal,.stats,.tips{display:none !important}
+  .bubble .x{display:none !important}
+  .origin,.au{box-shadow:none;break-inside:avoid}
+  .wrap{max-width:none;padding:0}
+}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="brand">
+      <span class="eyebrow handle">@whitecotchi</span>
+      <h1>페어 AU</h1>
+      <p class="tagline">맨 위에 오리진, 아래로 AU를 한 장씩 쌓습니다. 말풍선을 켜면 두 사람이 서로에게 한마디 던집니다.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="toolbar">
+    <button class="btn primary" id="addBtn">＋ AU 추가</button>
+    <span class="sep"></span>
+    <button class="btn" id="pngBtn">PNG 저장</button>
+    <button class="btn ghost sm" id="copyBtn">텍스트 복사</button>
+    <span class="spacer"></span>
+    <span class="saved" id="savedAt"></span>
+    <div class="seg" role="group" aria-label="테마" id="themeSeg">
+      <button data-set="baekco" aria-pressed="true">백코</button>
+      <button data-set="blooming" aria-pressed="false">블루밍</button>
+      <button data-set="bluelemon" aria-pressed="false">블루레몬</button>
+      <button data-set="custom" aria-pressed="false">그라데이션</button>
+    </div>
+    <span class="gradrow">
+      <input type="color" id="g1" aria-label="그라데이션 위쪽 색">
+      <span class="arrow">→</span>
+      <input type="color" id="g2" aria-label="그라데이션 아래쪽 색">
+      <button class="swap" id="gSwap" title="두 색 뒤집기">⇄</button>
+    </span>
+  </div>
+
+  <section class="origin" id="origin"></section>
+
+  <div class="aubar">
+    <span class="lab">AU</span>
+    <span class="line"></span>
+    <span class="lab" id="auCount"></span>
+  </div>
+  <section class="aus" id="aus"></section>
+
+  <div class="tips">
+    <h3>쓰는 법</h3>
+    <ul>
+      <li>넣은 그림은 잘리지 않고 통째로 들어갑니다. AU 카드는 그림 비율대로 자리를 잡고, 오리진 사진은 틀에 맞춰 담깁니다.</li>
+      <li>사진은 끌어서 옮기고 휠이나 슬라이더로 확대합니다 — 틀을 꽉 채우고 싶을 때 쓰세요. 두 번 누르면 원위치.</li>
+      <li>이름 옆 알약 버튼으로 말풍선을 켜고 끕니다. 말풍선 안을 눌러 한마디를 적으세요.</li>
+      <li>AU 카드는 이미지 한 장 + 설명 한 칸. 카드 아래 ◀ ▶ 로 순서를, ⧉ 로 복제, ✕ 로 삭제합니다.</li>
+      <li>그림 아래 ⓒ 줄에 출처를 적어 두세요. 오리진은 두 사진의 출처를 한 줄에 함께 적습니다.</li>
+      <li><b>그라데이션</b>을 고르고 색 두 개를 정하면 배경과 글자색이 그 색에 맞춰 따라옵니다.</li>
+      <li><b>PNG 저장</b>은 지금 화면을 이미지 한 장으로 내려받습니다. 도구·입력칸은 빠지고, 글꼴은 시스템 글꼴로 그려집니다.</li>
+      <li>모든 내용은 이 브라우저에만 저장됩니다.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="alertdialog" aria-modal="true" aria-labelledby="modalMsg">
+    <p id="modalMsg"></p>
+    <div class="row">
+      <button class="btn ghost" id="modalNo">취소</button>
+      <button class="btn danger" id="modalYes">삭제</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="picker" accept="image/*" hidden>
+
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const KEY = "pair-au-v1";
+const THEMES = ["baekco","blooming","bluelemon","custom"];
+
+const uid = p => p + Math.random().toString(36).slice(2,8);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const clamp = (v,lo,hi) => Math.max(lo, Math.min(hi, v));
+const short = (s, n) => { s = (s || "").trim(); return s ? (s.length > n ? s.slice(0,n) + "…" : s) : "이름"; };
+const hex = (c, fb) => /^#[0-9a-f]{6}$/i.test(c || "") ? c : fb;
+const pad2 = n => String(n).padStart(2, "0");
+
+/* ─── 색 다루기 — 그라데이션 두 색에서 나머지 값을 뽑는다 ── */
+const rgb = h => { h = h.replace("#",""); return [0,2,4].map(i => parseInt(h.slice(i,i+2),16)); };
+function hsl(h){
+  const [r,g,b] = rgb(h).map(v => v/255);
+  const mx = Math.max(r,g,b), mn = Math.min(r,g,b), d = mx - mn;
+  let H = 0;
+  if(d){
+    if(mx === r) H = (g-b)/d + (g < b ? 6 : 0);
+    else if(mx === g) H = (b-r)/d + 2;
+    else H = (r-g)/d + 4;
+    H *= 60;
+  }
+  const L = (mx+mn)/2;
+  return [H, (d ? d/(1-Math.abs(2*L-1)) : 0) * 100, L * 100];
+}
+function lum(h){
+  const c = rgb(h).map(v => { v /= 255; return v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4); });
+  return .2126*c[0] + .7152*c[1] + .0722*c[2];
+}
+const HSL = (h,s,l) => "hsl(" + Math.round(h) + " " + Math.round(clamp(s,0,100)) + "% " + Math.round(clamp(l,0,100)) + "%)";
+
+/* 두 색의 밝기로 밝은 판/어두운 판을 정하고, 진한 쪽을 강조색으로 삼는다 */
+function customVars(){
+  const c1 = hex(state.grad.c1, "#FFD9EC"), c2 = hex(state.grad.c2, "#D9E6FF");
+  const a = hsl(c1), b = hsl(c2);
+  const acc = a[1] >= b[1] ? a : b;
+  const h = acc[0], s = clamp((a[1] + b[1]) / 2, 5, 62);
+  const v = {"--body-bg":"linear-gradient(168deg," + c1 + " 0%," + c2 + " 100%)"};
+  if((lum(c1) + lum(c2)) / 2 < .34){                     // 어두운 두 색 → 어두운 판
+    v["--paper"] = HSL(h, s*.40,  9); v["--field"] = HSL(h, s*.34, 14); v["--surface"] = HSL(h, s*.30, 18);
+    v["--ink"]   = HSL(h, 14, 93);    v["--ink-2"] = HSL(h, 12, 74);    v["--ink-3"]   = HSL(h, 10, 55);
+    v["--rule"]  = HSL(h, s*.32, 30); v["--rule-soft"] = HSL(h, s*.32, 23);
+    v["--navy"]  = HSL(h, clamp(acc[1], 35, 85), 70); v["--navy-ink"] = HSL(h, 40, 10);
+    v["--danger"] = "#F2867E";
+    v["--shadow"] = "0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7)";
+    v["--shadow-lift"] = "0 2px 6px rgba(0,0,0,.45), 0 18px 40px -16px rgba(0,0,0,.8)";
+    v["color-scheme"] = "dark";
+  }else{
+    v["--paper"] = HSL(h, s*.55, 94); v["--field"] = HSL(h, s*.5, 97.5); v["--surface"] = "#FFFFFF";
+    v["--ink"]   = HSL(h, clamp(s,10,38), 17);
+    v["--ink-2"] = HSL(h, clamp(s, 8,28), 38);
+    v["--ink-3"] = HSL(h, clamp(s, 8,24), 55);
+    v["--rule"]  = HSL(h, s*.55, 85); v["--rule-soft"] = HSL(h, s*.5, 92);
+    v["--navy"]  = HSL(h, clamp(acc[1], 40, 90), clamp(acc[2] - 12, 34, 50)); v["--navy-ink"] = "#FFFFFF";
+    v["--danger"] = "#C0374C";
+    v["--shadow"] = "0 1px 2px rgba(20,24,31,.07), 0 10px 26px -12px rgba(20,24,31,.30)";
+    v["--shadow-lift"] = "0 2px 8px rgba(20,24,31,.12), 0 20px 44px -16px rgba(20,24,31,.40)";
+    v["color-scheme"] = "light";
+  }
+  return v;
+}
+const CUSTOM_KEYS = ["--body-bg","--paper","--field","--surface","--ink","--ink-2","--ink-3",
+                     "--rule","--rule-soft","--navy","--navy-ink","--danger","--shadow","--shadow-lift"];
+const varsText = v => Object.keys(v).map(k => k + ":" + v[k]).join(";");
+
+/* ─── 기본 데이터 ────────────────────────────────────────── */
+function seed(){
+  return {
+    theme:"baekco",
+    grad:{c1:"#FFD9EC", c2:"#D9E6FF"},
+    o:{
+      title:"오리진",
+      note:"본편에서 두 사람이 서 있는 자리. 관계의 바닥이 되는 한두 줄.",
+      credit:"",
+      a:{name:"인물 A", line:"먼저 다가가는 쪽", color:"#3E8BD6", img:null, iz:1, ix:0, iy:0,
+         say:"오늘 자리, 네 옆으로 맡아 뒀어.", bub:true},
+      b:{name:"인물 B", line:"물러서다 붙잡는 쪽", color:"#D64F8B", img:null, iz:1, ix:0, iy:0,
+         say:"…굳이 그러지 않아도 되는데.", bub:true}
+    },
+    aus:[
+      {id:uid("u"), title:"현대 AU", tag:"#현대", img:null, iz:1, ix:0, iy:0, credit:"",
+       note:"이 세계의 전제와, 오리진과 달라지는 지점. 두 사람이 어떤 사이로 만나는지 적어 두세요."},
+      {id:uid("u"), title:"만약에 AU", tag:"#IF", img:null, iz:1, ix:0, iy:0, credit:"",
+       note:"그때 다른 선택을 했다면. 갈라지는 순간 하나만 정해 두면 나머지는 따라옵니다."}
+    ]
+  };
+}
+
+/* ─── 손질 ───────────────────────────────────────────────── */
+function normPerson(p, name, color){
+  p = p || {};
+  p.name = typeof p.name === "string" ? p.name : name;
+  p.line = typeof p.line === "string" ? p.line : "";
+  p.say  = typeof p.say  === "string" ? p.say  : "";
+  p.bub  = p.bub !== false;
+  p.color = hex(p.color, color);
+  return normImg(p);
+}
+function normImg(o){
+  o.img = typeof o.img === "string" ? o.img : null;
+  o.iz = clamp(+o.iz || 1, .4, 4);
+  o.ix = +o.ix || 0; o.iy = +o.iy || 0;
+  return o;
+}
+function normalize(d){
+  if(!d || typeof d !== "object") return null;
+  if(THEMES.indexOf(d.theme) < 0) d.theme = "baekco";     // 예전 라이트·다크는 백코로
+  const g = d.grad = d.grad || {};
+  g.c1 = hex(g.c1, "#FFD9EC"); g.c2 = hex(g.c2, "#D9E6FF");
+  const o = d.o = d.o || {};
+  o.title  = typeof o.title  === "string" ? o.title  : "오리진";
+  o.note   = typeof o.note   === "string" ? o.note   : "";
+  o.credit = typeof o.credit === "string" ? o.credit : "";
+  o.a = normPerson(o.a, "인물 A", "#3E8BD6");
+  o.b = normPerson(o.b, "인물 B", "#D64F8B");
+  d.aus = Array.isArray(d.aus) ? d.aus : [];
+  d.aus.forEach(u => {
+    u.id = u.id || uid("u");
+    u.title  = typeof u.title  === "string" ? u.title  : "";
+    u.tag    = typeof u.tag    === "string" ? u.tag    : "";
+    u.note   = typeof u.note   === "string" ? u.note   : "";
+    u.credit = typeof u.credit === "string" ? u.credit : "";
+    normImg(u);
+  });
+  return d;
+}
+
+/* ─── 저장 ───────────────────────────────────────────────── */
+function load(){
+  try{ return normalize(JSON.parse(localStorage.getItem(KEY))); }
+  catch(e){ return null; }
+}
+let saveTimer = null;
+function save(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    try{
+      localStorage.setItem(KEY, JSON.stringify(state));
+      $("#savedAt").textContent = "저장됨 " + new Date().toLocaleTimeString("ko-KR",{hour:"2-digit",minute:"2-digit"});
+    }catch(e){
+      $("#savedAt").textContent = e && e.name === "QuotaExceededError"
+        ? "저장 공간이 가득 찼습니다 — 사진을 줄여 주세요"
+        : "이 환경에서는 자동 저장이 안 됩니다";
+    }
+  }, 250);
+}
+function notify(msg){ $("#savedAt").textContent = msg; }
+
+let state = load() || normalize(seed());
+const O = () => state.o;
+const auById = id => state.aus.find(u => u.id === id);
+
+/* 인물 사진과 AU 이미지가 같은 방식으로 움직인다 */
+const panStyle = c =>
+  'transform:translate(-50%,-50%) translate(' + (c.ix||0) + 'px,' + (c.iy||0) + 'px) scale(' + (c.iz||1) + ')';
+const zoomPct = iz => Math.round((clamp(iz||1,.4,4) - .4) / 3.6 * 100);
+/* 사진 하나를 가리키는 열쇠 — "a" · "b" · "au:<id>" */
+function panTarget(key){
+  if(key === "a" || key === "b") return O()[key];
+  if(key.indexOf("au:") === 0) return auById(key.slice(3));
+  return null;
+}
+
+/* ─── 확인창 ─────────────────────────────────────────────── */
+let askYes = null;
+function ask(msg, onYes, yesLabel){
+  askYes = onYes;
+  $("#modalMsg").textContent = msg;
+  $("#modalYes").textContent = yesLabel || "삭제";
+  $("#modal").hidden = false;
+  $("#modalYes").focus();
+}
+function closeAsk(){ $("#modal").hidden = true; askYes = null; }
+$("#modalNo").addEventListener("click", closeAsk);
+$("#modal").addEventListener("click", e => { if(e.target.id === "modal") closeAsk(); });
+$("#modalYes").addEventListener("click", () => {
+  const fn = askYes;
+  closeAsk();
+  if(fn) fn();
+});
+document.addEventListener("keydown", e => {
+  if($("#modal").hidden) return;
+  if(e.key === "Escape") closeAsk();
+  else if(e.key === "Enter"){ e.preventDefault(); $("#modalYes").click(); }
+});
+
+/* ─── 그리기 ─────────────────────────────────────────────── */
+/* 테마는 그리기와 따로 — 색을 고르는 동안 화면을 다시 그리지 않는다 */
+function syncTheme(){
+  const root = document.documentElement;
+  root.dataset.theme = state.theme;
+  CUSTOM_KEYS.forEach(k => root.style.removeProperty(k));
+  root.style.colorScheme = "";
+  if(state.theme === "custom"){
+    const v = customVars();
+    Object.keys(v).forEach(k => root.style.setProperty(k, v[k]));
+  }
+  $("#themeSeg").querySelectorAll("button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.set === state.theme)));
+  $("#g1").value = state.grad.c1;
+  $("#g2").value = state.grad.c2;
+}
+
+function render(){
+  syncTheme();
+  renderOrigin();
+  renderAus();
+  renderStats();
+  growAll();
+}
+
+function renderStats(){
+  const imgs = (O().a.img ? 1 : 0) + (O().b.img ? 1 : 0) + state.aus.filter(u => u.img).length;
+  $("#stats").innerHTML =
+    '<div class="stat"><span class="k">AU</span><span class="v">' + state.aus.length + '</span></div>' +
+    '<div class="stat"><span class="k">이미지</span><span class="v">' + imgs + '</span></div>';
+  $("#auCount").textContent = state.aus.length + " CARDS";
+}
+
+function whoHTML(side){
+  const c = O()[side];
+  return '<div class="who" data-side="' + side + '" style="--c:' + c.color + '">' +
+    '<div class="facebox">' +
+      '<div class="slot face' + (c.img ? "" : " empty") + '" data-slot="' + side + '"' +
+        (c.img ? ' title="끌어서 이동 · 휠로 확대 · 두 번 눌러 원위치"' : ' title="사진 넣기"') + '>' +
+        (c.img
+          ? '<img src="' + c.img + '" alt="" draggable="false" style="' + panStyle(c) + '">' +
+            '<span class="tools"><button data-repick="' + side + '" title="사진 바꾸기">⟳</button>' +
+            '<button data-clear="' + side + '" title="사진 지우기">✕</button></span>'
+          : "＋<br>사진") +
+      '</div>' +
+      (c.img
+        ? '<input type="range" class="zoom" min="0.4" max="4" step="0.01" value="' + c.iz + '"' +
+          ' data-zoom="' + side + '" style="--p:' + zoomPct(c.iz) + '" aria-label="사진 확대">'
+        : '<span class="hint">JPG · PNG</span>') +
+    '</div>' +
+    '<div class="col">' +
+      (c.bub
+        ? '<div class="bubble">' +
+            '<textarea class="grow" data-say="' + side + '" rows="1" placeholder="여기에 한마디 ♡">' + esc(c.say) + '</textarea>' +
+            '<button class="x" data-bubx="' + side + '" title="말풍선 끄기">✕</button>' +
+          '</div>'
+        : "") +
+      '<input type="text" class="big" data-p="' + side + '.name" value="' + esc(c.name) + '" placeholder="이름" autocomplete="off">' +
+      '<input type="text" data-p="' + side + '.line" value="' + esc(c.line) + '" placeholder="한 줄 소개" autocomplete="off">' +
+      '<div class="colorrow"><input type="color" data-color="' + side + '" value="' + c.color + '" aria-label="인물 색">' +
+        '<span>색 고르기</span></div>' +
+    '</div>' +
+  '</div>';
+}
+
+function swHTML(side){
+  const c = O()[side];
+  return '<button class="sw" data-bub="' + side + '" aria-pressed="' + c.bub + '" style="--c:' + c.color + '">' +
+    '<span class="dot"></span><span class="nm">' + esc(short(c.name, 8)) + ' 말풍선</span></button>';
+}
+
+function renderOrigin(){
+  const o = O();
+  $("#origin").innerHTML =
+    '<div class="obar">' +
+      '<span class="lab">Origin</span>' +
+      '<input type="text" class="otitle" data-o="title" value="' + esc(o.title) + '" placeholder="오리진" autocomplete="off">' +
+      swHTML("a") + swHTML("b") +
+    '</div>' +
+    '<div class="duo">' + whoHTML("a") + '<div class="heart">♥</div>' + whoHTML("b") + '</div>' +
+    '<div class="creditrow">' +
+      '<input type="text" class="credit" data-o="credit" value="' + esc(o.credit) + '" ' +
+      'placeholder="ⓒ 두 사진의 출처 · 그린이" autocomplete="off"></div>' +
+    '<textarea class="onote" data-o="note" placeholder="본편에서 두 사람이 서 있는 자리.">' + esc(o.note) + '</textarea>';
+}
+
+function auHTML(u, i){
+  const key = "au:" + u.id;
+  return '<article class="au" data-id="' + u.id + '">' +
+    '<div class="slot cover' + (u.img ? "" : " empty") + '" data-slot="' + key + '"' +
+      (u.img ? ' title="끌어서 이동 · 휠로 확대 · 두 번 눌러 원위치"' : ' title="이미지 넣기"') + '>' +
+      (u.img
+        ? '<img src="' + u.img + '" alt="" draggable="false" style="' + panStyle(u) + '">' +
+          '<span class="tools"><button data-repick="' + key + '" title="이미지 바꾸기">⟳</button>' +
+          '<button data-clear="' + key + '" title="이미지 지우기">✕</button></span>'
+        : "＋ 이 AU의 이미지 한 장") +
+    '</div>' +
+    (u.img
+      ? '<div class="zoomrow"><span class="hint">확대</span>' +
+        '<input type="range" min="0.4" max="4" step="0.01" value="' + u.iz + '"' +
+        ' data-zoom="' + key + '" style="--p:' + zoomPct(u.iz) + '" aria-label="이미지 확대"></div>'
+      : "") +
+    '<div class="creditrow">' +
+      '<input type="text" class="credit" data-a="credit" value="' + esc(u.credit) + '" ' +
+      'placeholder="ⓒ 출처 · 그린이" autocomplete="off"></div>' +
+    '<div class="aubody">' +
+      '<span class="no">AU ' + pad2(i + 1) + '</span>' +
+      '<input type="text" class="big" data-a="title" value="' + esc(u.title) + '" placeholder="AU 이름" autocomplete="off">' +
+      '<input type="text" class="tag" data-a="tag" value="' + esc(u.tag) + '" placeholder="#태그" autocomplete="off">' +
+      '<textarea class="note" data-a="note" placeholder="이 AU의 전제. 오리진과 무엇이 다른지, 두 사람은 어떤 사이인지.">' + esc(u.note) + '</textarea>' +
+    '</div>' +
+    '<div class="aufoot">' +
+      '<button class="mini" data-move="-1" title="앞으로"' + (i === 0 ? " disabled" : "") + '>◀</button>' +
+      '<button class="mini" data-move="1" title="뒤로"' + (i === state.aus.length - 1 ? " disabled" : "") + '>▶</button>' +
+      '<span class="spacer"></span>' +
+      '<button class="mini" data-dup="1" title="복제">⧉</button>' +
+      '<button class="mini del" data-del="1" title="삭제">✕</button>' +
+    '</div>' +
+  '</article>';
+}
+
+function renderAus(){
+  $("#aus").innerHTML =
+    state.aus.map(auHTML).join("") +
+    '<button class="addau" id="addAu"><b>＋</b>AU 추가</button>';
+}
+
+/* 말풍선은 쓰는 만큼 늘어난다.
+   자리가 잡히기 전(글꼴 로딩 중)에 재면 엉뚱하게 부풀므로 폭이 잡힌 뒤에만 잰다. */
+function grow(ta){
+  if(ta.clientWidth < 40) return;
+  ta.style.height = "auto";
+  ta.style.height = ta.scrollHeight + "px";
+}
+function growAll(){ document.querySelectorAll("textarea.grow").forEach(grow); }
+window.addEventListener("load", growAll);
+window.addEventListener("resize", growAll);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(growAll);
+
+/* ─── 오리진 다루기 ──────────────────────────────────────── */
+$("#origin").addEventListener("input", e => {
+  const el = e.target;
+  if(el.dataset.o){ O()[el.dataset.o] = el.value; save(); return; }
+  if(el.dataset.p){
+    const [side, field] = el.dataset.p.split(".");
+    O()[side][field] = el.value;
+    if(field === "name"){                      // 스위치 이름표만 살짝 고쳐 준다
+      const sw = $('.sw[data-bub="' + side + '"] .nm');
+      if(sw) sw.textContent = short(el.value, 8) + " 말풍선";
+    }
+    save(); return;
+  }
+  if(el.dataset.say){ O()[el.dataset.say].say = el.value; grow(el); save(); return; }
+  if(el.dataset.color){
+    const side = el.dataset.color, c = O()[side];
+    c.color = hex(el.value, c.color);
+    const who = el.closest(".who");
+    if(who) who.style.setProperty("--c", c.color);
+    const sw = $('.sw[data-bub="' + side + '"]');
+    if(sw) sw.style.setProperty("--c", c.color);
+    save(); return;
+  }
+  const zk = el.dataset.zoom;
+  if(zk){
+    const t = panTarget(zk);
+    if(!t) return;
+    t.iz = clamp(+el.value, .4, 4);
+    el.style.setProperty("--p", zoomPct(t.iz));
+    applyPan(zk);
+    save();
+  }
+});
+
+$("#origin").addEventListener("click", e => {
+  const sw = e.target.closest(".sw");
+  if(sw){ const c = O()[sw.dataset.bub]; c.bub = !c.bub; save(); render(); return; }
+
+  const x = e.target.closest("[data-bubx]");
+  if(x){ O()[x.dataset.bubx].bub = false; save(); render(); return; }
+
+  const re = e.target.closest("[data-repick]");
+  if(re){ pickImage(re.dataset.repick); return; }
+
+  const cl = e.target.closest("[data-clear]");
+  if(cl){
+    const t = panTarget(cl.dataset.clear);
+    if(t){ t.img = null; t.iz = 1; t.ix = 0; t.iy = 0; save(); render(); }
+    return;
+  }
+  const slot = e.target.closest(".slot");
+  if(slot && !panMoved){
+    const t = panTarget(slot.dataset.slot);
+    if(t && !t.img) pickImage(slot.dataset.slot);
+  }
+});
+
+/* ─── AU 카드 다루기 ─────────────────────────────────────── */
+$("#aus").addEventListener("input", e => {
+  const el = e.target, card = el.closest(".au");
+  if(el.dataset.zoom){
+    const t = panTarget(el.dataset.zoom);
+    if(!t) return;
+    t.iz = clamp(+el.value, .4, 4);
+    el.style.setProperty("--p", zoomPct(t.iz));
+    applyPan(el.dataset.zoom);
+    save(); return;
+  }
+  if(!card || !el.dataset.a) return;
+  const u = auById(card.dataset.id);
+  if(u){ u[el.dataset.a] = el.value; save(); }
+});
+
+$("#aus").addEventListener("click", e => {
+  if(e.target.closest("#addAu")){ addAu(); return; }
+
+  const re = e.target.closest("[data-repick]");
+  if(re){ pickImage(re.dataset.repick); return; }
+
+  const cl = e.target.closest("[data-clear]");
+  if(cl){
+    const t = panTarget(cl.dataset.clear);
+    if(t){ t.img = null; t.iz = 1; t.ix = 0; t.iy = 0; save(); render(); }
+    return;
+  }
+
+  const card = e.target.closest(".au");
+  if(!card) return;
+  const u = auById(card.dataset.id), i = state.aus.indexOf(u);
+
+  const mv = e.target.closest("[data-move]");
+  if(mv){
+    const j = i + (+mv.dataset.move);
+    if(j < 0 || j >= state.aus.length) return;
+    state.aus.splice(j, 0, state.aus.splice(i, 1)[0]);
+    save(); render(); return;
+  }
+  if(e.target.closest("[data-dup]")){
+    const copy = JSON.parse(JSON.stringify(u));
+    copy.id = uid("u");
+    copy.title = (u.title || "AU") + " 사본";
+    state.aus.splice(i + 1, 0, copy);
+    save(); render();
+    notify("AU를 복제했습니다");
+    return;
+  }
+  if(e.target.closest("[data-del]")){
+    ask("‘" + (u.title || "이름 없는 AU") + "’ 카드를 지울까요?" + (u.img ? "\n이미지도 함께 지워집니다." : ""), () => {
+      state.aus.splice(i, 1);
+      save(); render();
+    });
+    return;
+  }
+  const slot = e.target.closest(".slot");
+  if(slot && !panMoved && !u.img) pickImage(slot.dataset.slot);
+});
+
+function addAu(){
+  state.aus.push({id:uid("u"), title:"", tag:"", note:"", img:null, iz:1, ix:0, iy:0});
+  save(); render();
+  const cards = $("#aus").querySelectorAll(".au");
+  const last = cards[cards.length - 1];
+  if(last){
+    last.scrollIntoView({behavior:"smooth", block:"center"});
+    const t = last.querySelector('input[data-a="title"]');
+    if(t) t.focus();
+  }
+}
+
+/* ─── 사진 끌기 · 휠 확대 (오리진과 AU가 같은 방식) ──────── */
+function applyPan(key){
+  const t = panTarget(key);
+  const img = document.querySelector('.slot[data-slot="' + key + '"] img');
+  if(t && img) img.style.cssText = panStyle(t);
+}
+let pan = null, panMoved = false;
+document.addEventListener("pointerdown", e => {
+  const slot = e.target.closest(".slot");
+  if(!slot || slot.classList.contains("empty") || e.target.closest(".tools")) return;
+  const key = slot.dataset.slot, t = panTarget(key);
+  if(!t || !t.img) return;
+  pan = {key:key, x:e.clientX, y:e.clientY, ix:t.ix, iy:t.iy};
+  panMoved = false;
+  slot.classList.add("grabbing");
+  try{ slot.setPointerCapture(e.pointerId); }catch(err){}
+});
+document.addEventListener("pointermove", e => {
+  if(!pan) return;
+  const dx = e.clientX - pan.x, dy = e.clientY - pan.y;
+  if(Math.abs(dx) + Math.abs(dy) > 3) panMoved = true;
+  const t = panTarget(pan.key);
+  if(!t) return;
+  t.ix = pan.ix + dx; t.iy = pan.iy + dy;
+  applyPan(pan.key);
+});
+document.addEventListener("pointerup", () => {
+  if(!pan) return;
+  const slot = document.querySelector('.slot[data-slot="' + pan.key + '"]');
+  if(slot) slot.classList.remove("grabbing");
+  pan = null;
+  if(panMoved){ save(); setTimeout(() => { panMoved = false; }, 0); }
+});
+document.addEventListener("wheel", e => {
+  const slot = e.target.closest(".slot");
+  if(!slot || slot.classList.contains("empty")) return;
+  const key = slot.dataset.slot, t = panTarget(key);
+  if(!t || !t.img) return;
+  e.preventDefault();
+  t.iz = clamp(t.iz * (1 - e.deltaY * 0.0015), .4, 4);
+  applyPan(key);
+  const z = document.querySelector('[data-zoom="' + key + '"]');
+  if(z){ z.value = t.iz; z.style.setProperty("--p", zoomPct(t.iz)); }
+  save();
+}, {passive:false});
+document.addEventListener("dblclick", e => {                 // 두 번 누르면 원위치
+  const slot = e.target.closest(".slot");
+  if(!slot || slot.classList.contains("empty")) return;
+  const t = panTarget(slot.dataset.slot);
+  if(!t) return;
+  t.iz = 1; t.ix = 0; t.iy = 0;
+  save(); render();
+});
+
+/* ─── 이미지 넣기 ────────────────────────────────────────── */
+let pickTarget = null;
+function pickImage(target){ pickTarget = target; $("#picker").click(); }
+$("#picker").addEventListener("change", e => {
+  const f = e.target.files[0];
+  e.target.value = "";
+  if(!f || !pickTarget) return;
+  const key = pickTarget;
+  // localStorage에 들어갈 크기로 줄여서 담는다 — 가로세로 비율은 원본 그대로
+  shrink(f, key.indexOf("au:") === 0 ? 1000 : 480, data => {
+    const t = panTarget(key);
+    if(!t) return;
+    t.img = data; t.iz = 1; t.ix = 0; t.iy = 0;
+    save(); render();
+  });
+});
+function shrink(file, maxW, cb){
+  const rd = new FileReader();
+  rd.onload = () => {
+    const im = new Image();
+    im.onload = () => {
+      const sc = Math.min(1, maxW / im.width);
+      const w = Math.max(1, Math.round(im.width * sc)), h = Math.max(1, Math.round(im.height * sc));
+      const cv = document.createElement("canvas");
+      cv.width = w; cv.height = h;
+      cv.getContext("2d").drawImage(im, 0, 0, w, h);
+      try{ cb(cv.toDataURL("image/jpeg", 0.82)); }
+      catch(err){ cb(rd.result); }
+    };
+    im.onerror = () => notify("이 이미지는 읽을 수 없습니다");
+    im.src = rd.result;
+  };
+  rd.readAsDataURL(file);
+}
+
+/* ─── PNG로 저장 ─────────────────────────────────────────
+   화면을 통째로 복제해 SVG(foreignObject) 안에서 다시 그린 뒤 캔버스로 굽는다.
+   웹폰트는 그림 안으로 들어가지 못해 시스템 글꼴로 그려진다. */
+const EX_DROP = ".toolbar,.tools,.zoom,.zoomrow,.hint,.aufoot,.addau,.tips,.colorrow,.bubble .x";
+function exportPNG(){
+  const src = $(".wrap");
+  const W = Math.max(920, Math.ceil(src.getBoundingClientRect().width));
+
+  // 입력칸의 지금 값은 속성에 박아 두어야 복제본까지 따라온다
+  src.querySelectorAll("input[type=text]").forEach(el => el.setAttribute("value", el.value));
+  src.querySelectorAll("textarea").forEach(el => { el.textContent = el.value; });
+
+  const clone = src.cloneNode(true);
+  clone.querySelectorAll(EX_DROP).forEach(n => n.remove());
+  clone.querySelectorAll("input[type=text],textarea").forEach(el => {
+    const d = document.createElement("div");
+    d.className = ("ex " + el.className).trim();
+    d.textContent = (el.tagName === "TEXTAREA" ? el.textContent : el.getAttribute("value") || "").trim();
+    el.replaceWith(d);
+  });
+  // 빈 출처 줄과 사진 자리의 안내 글자는 그림에 남기지 않는다
+  clone.querySelectorAll(".creditrow").forEach(r => {
+    const t = r.querySelector(".ex");
+    if(!t || !t.textContent) r.remove();
+    else t.textContent = "ⓒ " + t.textContent;
+  });
+  clone.querySelectorAll(".slot.empty").forEach(s => { s.textContent = ""; });
+  clone.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+
+  // 실제 높이는 같은 규칙으로 화면 밖에서 한 번 재 본다
+  const holder = document.createElement("div");
+  holder.className = "exportroot";
+  holder.style.cssText = "position:fixed;left:-20000px;top:0;width:" + W + "px";
+  holder.appendChild(clone);
+  document.body.appendChild(holder);
+  const H = Math.ceil(holder.getBoundingClientRect().height);
+  const body = new XMLSerializer().serializeToString(clone);
+  holder.remove();
+
+  const S = 2;                                            // 두 배로 구워 또렷하게
+  const vars = state.theme === "custom" ? varsText(customVars()) : "";
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="' + (W*S) + '" height="' + (H*S) + '"' +
+      ' viewBox="0 0 ' + W + ' ' + H + '" data-theme="' + state.theme + '"' +
+      (vars ? ' style="' + esc(vars) + '"' : "") + '>' +
+      '<style><![CDATA[' + document.querySelector("style").textContent + ']]></style>' +
+      '<foreignObject x="0" y="0" width="' + W + '" height="' + H + '">' +
+        '<div xmlns="http://www.w3.org/1999/xhtml" class="exportroot" style="width:' + W + 'px">' +
+          body +
+        '</div>' +
+      '</foreignObject>' +
+    '</svg>';
+
+  const img = new Image();
+  img.onload = () => {
+    const cv = document.createElement("canvas");
+    cv.width = W*S; cv.height = H*S;
+    const g = cv.getContext("2d");
+    g.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--paper").trim() || "#fff";
+    g.fillRect(0, 0, cv.width, cv.height);
+    g.drawImage(img, 0, 0);
+    cv.toBlob(b => {
+      if(!b){ notify("PNG를 만들지 못했습니다"); return; }
+      const url = URL.createObjectURL(b), a = document.createElement("a");
+      a.href = url; a.download = pngName();
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      notify("PNG로 저장했습니다");
+    }, "image/png");
+  };
+  img.onerror = () => notify("PNG를 만들지 못했습니다");
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+function pngName(){
+  const o = O(), d = new Date();
+  const nm = (short(o.a.name, 10) + "-" + short(o.b.name, 10)).replace(/[\\/:*?"<>|\s…]/g, "");
+  return "pair-au_" + nm + "_" + d.getFullYear() + pad2(d.getMonth()+1) + pad2(d.getDate()) + ".png";
+}
+
+/* ─── 툴바 ───────────────────────────────────────────────── */
+$("#addBtn").addEventListener("click", addAu);
+$("#pngBtn").addEventListener("click", exportPNG);
+$("#themeSeg").addEventListener("click", e => {
+  const b = e.target.closest("button[data-set]");
+  if(!b) return;
+  state.theme = b.dataset.set; save(); syncTheme();
+});
+// 색을 고르는 동안에는 화면을 다시 그리지 않는다 — 색 고르개가 닫히지 않게
+["g1","g2"].forEach((id, i) => {
+  $("#" + id).addEventListener("input", e => {
+    const k = i ? "c2" : "c1";
+    state.grad[k] = hex(e.target.value, state.grad[k]);
+    state.theme = "custom";
+    syncTheme(); save();
+  });
+});
+$("#gSwap").addEventListener("click", () => {
+  const g = state.grad, t = g.c1;
+  g.c1 = g.c2; g.c2 = t;
+  state.theme = "custom";
+  syncTheme(); save();
+});
+$("#copyBtn").addEventListener("click", () => {
+  const o = O();
+  let out = "# " + short(o.a.name, 12) + " × " + short(o.b.name, 12) + "\n";
+  out += "\n## " + (o.title || "오리진") + "\n";
+  out += "- " + o.a.name + (o.a.line ? " — " + o.a.line : "") + "\n";
+  out += "- " + o.b.name + (o.b.line ? " — " + o.b.line : "") + "\n";
+  if(o.a.bub && o.a.say.trim()) out += "  " + o.a.name + ': "' + o.a.say.trim() + '"\n';
+  if(o.b.bub && o.b.say.trim()) out += "  " + o.b.name + ': "' + o.b.say.trim() + '"\n';
+  if(o.note.trim()) out += "> " + o.note.trim() + "\n";
+  if(o.credit.trim()) out += "ⓒ " + o.credit.trim() + "\n";
+  state.aus.forEach((u, i) => {
+    out += "\n## AU " + pad2(i + 1) + " · " + (u.title || "(이름 없음)") +
+           (u.tag ? "  " + u.tag : "") + (u.img ? "  🖼" : "") + "\n";
+    if(u.note.trim()) out += u.note.trim() + "\n";
+    if(u.credit.trim()) out += "ⓒ " + u.credit.trim() + "\n";
+  });
+  const done = () => notify("텍스트를 복사했습니다");
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(out).then(done, () => fallbackCopy(out, done));
+  }else{
+    fallbackCopy(out, done);
+  }
+});
+function fallbackCopy(text, done){
+  const ta = document.createElement("textarea");
+  ta.value = text; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand("copy"); done(); }catch(e){}
+  ta.remove();
+}
+
+render();
+</script>
