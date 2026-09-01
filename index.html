@@ -137,9 +137,8 @@ h1{
 
 /* ─── 가운데 관계 ─────────────────────────────────────────
    서로를 향한 화살표. 글자는 눌러서 바로 고친다. 색은 그 감정을 품은 쪽. */
-.bond{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0}
-.heart{font-size:22px;line-height:1;color:var(--navy)}
-.arrow{display:flex;flex-direction:column;align-items:center;gap:0;color:var(--c,var(--ink-3));width:100%}
+.bond{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0}
+.arrow{display:flex;flex-direction:column;align-items:center;gap:1px;color:var(--c,var(--ink-3));width:100%}
 .arrow svg{display:block;overflow:visible}
 .arrow.ba svg{transform:rotate(180deg)}
 .feel{
@@ -221,7 +220,7 @@ input[type=color]::-moz-color-swatch{border:0;border-radius:5px}
 }
 .slot.face.empty{border-style:dashed;background:var(--surface)}
 /* 넣은 그림은 잘라내지 않는다 — 통째로 보이게 담고, 채우고 싶으면 끌거나 확대한다 */
-.slot.face img,.slot.cover img{
+.slot.face img,.slot.cover img,.slot.pair img{
   position:absolute;left:50%;top:50%;width:100%;height:100%;object-fit:contain;
   transform-origin:center;cursor:grab;user-select:none;-webkit-user-drag:none;
 }
@@ -265,11 +264,30 @@ input[type=range]::-moz-range-thumb{
 .au .slot.cover.empty{background:var(--surface);border-bottom:1px dashed var(--rule)}
 .au .zoomrow{padding:8px 12px 0;display:flex;align-items:center;gap:8px}
 .au .zoomrow input[type=range]{flex:1}
-.aubody{padding:12px;display:flex;flex-direction:column;gap:7px;flex:1}
-.aubody .no{
+
+/* 카드 머리 — 번호와 그림 방식(한 장·없음·페어) */
+.aumode{display:flex;align-items:center;gap:8px;padding:10px 12px 0}
+.no{
   font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
   color:var(--ink-3);text-transform:uppercase;
 }
+.seg.tiny{margin-left:auto;border-radius:7px}
+.seg.tiny button{padding:3px 8px;font-size:11px}
+
+/* 페어 방식 — 오리진처럼 두 장 + 가운데 화살표 */
+.aupair{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);gap:6px;padding:10px 10px 0;align-items:start}
+.aupair .pcol{display:flex;flex-direction:column;gap:4px;min-width:0}
+.slot.pair{
+  width:100%;aspect-ratio:4/5;padding:0;background:var(--field);
+  border:1px solid var(--rule-soft);border-radius:10px;touch-action:none;
+}
+.slot.pair.empty{border-style:dashed;background:var(--surface)}
+.aupair .zoomrow{padding:0}
+.aupair .zoomrow input[type=range]{width:100%}
+.bond.compact{gap:7px}
+.bond.compact .feel{font-size:11px}
+
+.aubody{padding:12px;display:flex;flex-direction:column;gap:7px;flex:1}
 .aubody input,.aubody textarea{
   background:var(--field);border:1px solid var(--rule-soft);border-radius:8px;padding:7px 9px;width:100%;
 }
@@ -428,7 +446,8 @@ input[type=range]::-moz-range-thumb{
       <li>사진은 끌어서 옮기고 휠이나 슬라이더로 확대합니다 — 틀을 꽉 채우고 싶을 때 쓰세요. 두 번 누르면 원위치.</li>
       <li>이름 옆 알약 버튼으로 말풍선을 켜고 끕니다. 말풍선 안을 눌러 한마디를 적으세요.</li>
       <li>가운데 화살표의 글자를 눌러 서로에게 품은 감정을 적습니다. 화살표 색은 그 감정을 품은 쪽의 색입니다.</li>
-      <li>AU 카드는 이미지 한 장 + 설명 한 칸. 카드 아래 ◀ ▶ 로 순서를, ⧉ 로 복제, ✕ 로 삭제합니다.</li>
+      <li>AU 카드 머리의 <b>한 장 · 없음 · 페어</b> 로 그림 방식을 고릅니다. 페어는 오리진처럼 두 장에 가운데 화살표가 붙습니다.</li>
+      <li>방식을 바꿔도 넣어 둔 그림은 지워지지 않습니다. 카드 아래 ◀ ▶ 로 순서를, ⧉ 로 복제, ✕ 로 삭제합니다.</li>
       <li>그림 아래 ⓒ 줄에 출처를 적어 두세요. 오리진은 두 사진의 출처를 한 줄에 함께 적습니다.</li>
       <li><b>그라데이션</b>을 고르고 색 두 개를 정하면 배경과 글자색이 그 색에 맞춰 따라옵니다.</li>
       <li><b>PNG 저장</b>은 지금 화면을 이미지 한 장으로 내려받습니다. 도구·입력칸은 빠지고, 글꼴은 시스템 글꼴로 그려집니다.</li>
@@ -533,10 +552,13 @@ function seed(){
          say:"…굳이 그러지 않아도 되는데.", bub:true}
     },
     aus:[
-      {id:uid("u"), title:"현대 AU", tag:"#현대", img:null, iz:1, ix:0, iy:0, credit:"",
+      {id:uid("u"), mode:"one", title:"현대 AU", tag:"#현대", credit:"",
        note:"이 세계의 전제와, 오리진과 달라지는 지점. 두 사람이 어떤 사이로 만나는지 적어 두세요."},
-      {id:uid("u"), title:"만약에 AU", tag:"#IF", img:null, iz:1, ix:0, iy:0, credit:"",
-       note:"그때 다른 선택을 했다면. 갈라지는 순간 하나만 정해 두면 나머지는 따라옵니다."}
+      {id:uid("u"), mode:"duo", title:"만약에 AU", tag:"#IF", credit:"",
+       ab:"지켜봄", ba:"기대는 중",
+       note:"그때 다른 선택을 했다면. 갈라지는 순간 하나만 정해 두면 나머지는 따라옵니다."},
+      {id:uid("u"), mode:"none", title:"설정만 있는 AU", tag:"", credit:"",
+       note:"그림 없이 설정만 적어 두는 카드. 머리의 한 장 · 없음 · 페어로 언제든 바꿉니다."}
     ]
   };
 }
@@ -577,7 +599,12 @@ function normalize(d){
     u.tag    = typeof u.tag    === "string" ? u.tag    : "";
     u.note   = typeof u.note   === "string" ? u.note   : "";
     u.credit = typeof u.credit === "string" ? u.credit : "";
-    normImg(u);
+    u.ab     = typeof u.ab     === "string" ? u.ab     : "";
+    u.ba     = typeof u.ba     === "string" ? u.ba     : "";
+    u.mode   = ["one","none","duo"].indexOf(u.mode) < 0 ? "one" : u.mode;
+    u.a = normImg(u.a || {});      // 페어 방식에서 쓰는 두 장
+    u.b = normImg(u.b || {});
+    normImg(u);                    // 한 장 방식에서 쓰는 그림
   });
   return d;
 }
@@ -611,11 +638,15 @@ const auById = id => state.aus.find(u => u.id === id);
 const panStyle = c =>
   'transform:translate(-50%,-50%) translate(' + (c.ix||0) + 'px,' + (c.iy||0) + 'px) scale(' + (c.iz||1) + ')';
 const zoomPct = iz => Math.round((clamp(iz||1,.4,4) - .4) / 3.6 * 100);
-/* 사진 하나를 가리키는 열쇠 — "a" · "b" · "au:<id>" */
+/* 사진 하나를 가리키는 열쇠 — "a"·"b"(오리진), "au:<id>"(한 장), "aua:·aub:<id>"(페어) */
 function panTarget(key){
   if(key === "a" || key === "b") return O()[key];
-  if(key.indexOf("au:") === 0) return auById(key.slice(3));
-  return null;
+  const i = key.indexOf(":");
+  if(i < 0) return null;
+  const u = auById(key.slice(i + 1));
+  if(!u) return null;
+  const pre = key.slice(0, i);
+  return pre === "au" ? u : pre === "aua" ? u.a : pre === "aub" ? u.b : null;
 }
 
 /* ─── 확인창 ─────────────────────────────────────────────── */
@@ -667,7 +698,10 @@ function render(){
 }
 
 function renderStats(){
-  const imgs = (O().a.img ? 1 : 0) + (O().b.img ? 1 : 0) + state.aus.filter(u => u.img).length;
+  const imgs = (O().a.img ? 1 : 0) + (O().b.img ? 1 : 0) +
+    state.aus.reduce((n, u) => n + (u.mode === "duo"
+      ? (u.a.img ? 1 : 0) + (u.b.img ? 1 : 0)
+      : u.mode === "one" && u.img ? 1 : 0), 0);
   $("#stats").innerHTML =
     '<div class="stat"><span class="k">AU</span><span class="v">' + state.aus.length + '</span></div>' +
     '<div class="stat"><span class="k">이미지</span><span class="v">' + imgs + '</span></div>';
@@ -712,24 +746,29 @@ function swHTML(side){
     '<span class="dot"></span><span class="nm">' + esc(short(c.name, 8)) + ' 말풍선</span></button>';
 }
 
-/* 두 사람 사이의 화살표 한 벌 — 위는 A→B, 아래는 B→A(그림을 반 바퀴 돌린다) */
-const ARROW =
-  '<svg viewBox="0 0 76 22" width="76" height="22" aria-hidden="true">' +
-    '<path d="M5 17 Q 38 0 70 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
-    '<path d="M70 12 l-5.8 -6.9 M70 12 l-9 1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+/* 두 사람 사이의 직선 화살표 — 위는 A→B, 아래는 B→A(그림을 반 바퀴 돌린다) */
+const arrowSVG = w =>
+  '<svg viewBox="0 0 ' + w + ' 12" width="' + w + '" height="12" aria-hidden="true">' +
+    '<path d="M3 6 H ' + (w - 5) + '" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>' +
+    '<path d="M' + (w - 3) + ' 6 l-6.5 -4 M' + (w - 3) + ' 6 l-6.5 4" fill="none" stroke="currentColor"' +
+      ' stroke-width="2.2" stroke-linecap="round"/>' +
   '</svg>';
-function bondHTML(){
-  const o = O();
-  return '<div class="bond">' +
-    '<div class="heart">♥</div>' +
-    '<div class="arrow ab" data-dir="ab" style="--c:' + o.a.color + '">' +
-      '<input type="text" class="feel" data-o="ab" value="' + esc(o.ab) + '" placeholder="감정" autocomplete="off">' +
-      ARROW +
-    '</div>' +
-    '<div class="arrow ba" data-dir="ba" style="--c:' + o.b.color + '">' +
-      ARROW +
-      '<input type="text" class="feel" data-o="ba" value="' + esc(o.ba) + '" placeholder="감정" autocomplete="off">' +
-    '</div>' +
+
+/* target 이 "o" 면 오리진, AU 객체면 그 카드의 관계 */
+function bondHTML(target){
+  const isO = target === "o", o = O(), src = isO ? o : target;
+  const attr = k => (isO ? ' data-o="' : ' data-a="') + k + '"';
+  const w = isO ? 76 : 58;
+  const line = (dir, color, first) =>
+    '<div class="arrow ' + dir + '" data-dir="' + dir + '" style="--c:' + color + '">' +
+      (first ? "" : arrowSVG(w)) +
+      '<input type="text" class="feel"' + attr(dir) + ' value="' + esc(src[dir]) + '"' +
+        ' placeholder="감정" autocomplete="off">' +
+      (first ? arrowSVG(w) : "") +
+    '</div>';
+  return '<div class="bond' + (isO ? "" : " compact") + '">' +
+    line("ab", o.a.color, true) +      // 글자가 위, 화살표가 아래
+    line("ba", o.b.color, false) +     // 화살표가 위, 글자가 아래
   '</div>';
 }
 
@@ -741,34 +780,63 @@ function renderOrigin(){
       '<input type="text" class="otitle" data-o="title" value="' + esc(o.title) + '" placeholder="오리진" autocomplete="off">' +
       swHTML("a") + swHTML("b") +
     '</div>' +
-    '<div class="duo">' + whoHTML("a") + bondHTML() + whoHTML("b") + '</div>' +
+    '<div class="duo">' + whoHTML("a") + bondHTML("o") + whoHTML("b") + '</div>' +
     '<div class="creditrow">' +
       '<input type="text" class="credit" data-o="credit" value="' + esc(o.credit) + '" ' +
       'placeholder="ⓒ 두 사진의 출처 · 그린이" autocomplete="off"></div>' +
     '<textarea class="onote" data-o="note" placeholder="본편에서 두 사람이 서 있는 자리.">' + esc(o.note) + '</textarea>';
 }
 
-function auHTML(u, i){
+/* 그림 자리 하나 — 오리진·AU 어디서나 같은 방식으로 넣고 끌고 확대한다 */
+function imgSlot(key, o, cls, ph){
+  return '<div class="slot ' + cls + (o.img ? "" : " empty") + '" data-slot="' + key + '"' +
+    (o.img ? ' title="끌어서 이동 · 휠로 확대 · 두 번 눌러 원위치"' : ' title="이미지 넣기"') + '>' +
+    (o.img
+      ? '<img src="' + o.img + '" alt="" draggable="false" style="' + panStyle(o) + '">' +
+        '<span class="tools"><button data-repick="' + key + '" title="이미지 바꾸기">⟳</button>' +
+        '<button data-clear="' + key + '" title="이미지 지우기">✕</button></span>'
+      : ph) +
+  '</div>';
+}
+function zoomRow(key, o, label){
+  if(!o.img) return "";
+  return '<div class="zoomrow">' + (label ? '<span class="hint">' + label + '</span>' : "") +
+    '<input type="range" min="0.4" max="4" step="0.01" value="' + o.iz + '"' +
+    ' data-zoom="' + key + '" style="--p:' + zoomPct(o.iz) + '" aria-label="이미지 확대"></div>';
+}
+const creditRow = u =>
+  '<div class="creditrow">' +
+    '<input type="text" class="credit" data-a="credit" value="' + esc(u.credit) + '" ' +
+    'placeholder="ⓒ 출처 · 그린이" autocomplete="off"></div>';
+
+const MODES = [["one","한 장"],["none","없음"],["duo","페어"]];
+
+function auTopHTML(u){
+  if(u.mode === "none") return "";
+  if(u.mode === "duo"){
+    const o = O();
+    const col = side =>
+      '<div class="pcol">' +
+        imgSlot("au" + side + ":" + u.id, u[side], "pair", "＋ " + esc(short(o[side].name, 6))) +
+        zoomRow("au" + side + ":" + u.id, u[side]) +
+      '</div>';
+    return '<div class="aupair">' + col("a") + bondHTML(u) + col("b") + '</div>' + creditRow(u);
+  }
   const key = "au:" + u.id;
+  return imgSlot(key, u, "cover", "＋ 이 AU의 이미지 한 장") + zoomRow(key, u, "확대") + creditRow(u);
+}
+
+function auHTML(u, i){
   return '<article class="au" data-id="' + u.id + '">' +
-    '<div class="slot cover' + (u.img ? "" : " empty") + '" data-slot="' + key + '"' +
-      (u.img ? ' title="끌어서 이동 · 휠로 확대 · 두 번 눌러 원위치"' : ' title="이미지 넣기"') + '>' +
-      (u.img
-        ? '<img src="' + u.img + '" alt="" draggable="false" style="' + panStyle(u) + '">' +
-          '<span class="tools"><button data-repick="' + key + '" title="이미지 바꾸기">⟳</button>' +
-          '<button data-clear="' + key + '" title="이미지 지우기">✕</button></span>'
-        : "＋ 이 AU의 이미지 한 장") +
-    '</div>' +
-    (u.img
-      ? '<div class="zoomrow"><span class="hint">확대</span>' +
-        '<input type="range" min="0.4" max="4" step="0.01" value="' + u.iz + '"' +
-        ' data-zoom="' + key + '" style="--p:' + zoomPct(u.iz) + '" aria-label="이미지 확대"></div>'
-      : "") +
-    '<div class="creditrow">' +
-      '<input type="text" class="credit" data-a="credit" value="' + esc(u.credit) + '" ' +
-      'placeholder="ⓒ 출처 · 그린이" autocomplete="off"></div>' +
-    '<div class="aubody">' +
+    '<div class="aumode">' +
       '<span class="no">AU ' + pad2(i + 1) + '</span>' +
+      '<div class="seg tiny" role="group" aria-label="그림 방식">' +
+        MODES.map(m => '<button data-mode="' + m[0] + '" aria-pressed="' + (u.mode === m[0]) + '">' +
+          m[1] + '</button>').join("") +
+      '</div>' +
+    '</div>' +
+    auTopHTML(u) +
+    '<div class="aubody">' +
       '<input type="text" class="big" data-a="title" value="' + esc(u.title) + '" placeholder="AU 이름" autocomplete="off">' +
       '<input type="text" class="tag" data-a="tag" value="' + esc(u.tag) + '" placeholder="#태그" autocomplete="off">' +
       '<textarea class="note" data-a="note" placeholder="이 AU의 전제. 오리진과 무엇이 다른지, 두 사람은 어떤 사이인지.">' + esc(u.note) + '</textarea>' +
@@ -822,8 +890,8 @@ $("#origin").addEventListener("input", e => {
     if(who) who.style.setProperty("--c", c.color);
     const sw = $('.sw[data-bub="' + side + '"]');
     if(sw) sw.style.setProperty("--c", c.color);
-    const ar = $('.arrow[data-dir="' + (side === "a" ? "ab" : "ba") + '"]');
-    if(ar) ar.style.setProperty("--c", c.color);
+    document.querySelectorAll('.arrow[data-dir="' + (side === "a" ? "ab" : "ba") + '"]')
+      .forEach(ar => ar.style.setProperty("--c", c.color));
     save(); return;
   }
   const zk = el.dataset.zoom;
@@ -879,6 +947,13 @@ $("#aus").addEventListener("input", e => {
 $("#aus").addEventListener("click", e => {
   if(e.target.closest("#addAu")){ addAu(); return; }
 
+  const md = e.target.closest("[data-mode]");
+  if(md){
+    const u = auById(md.closest(".au").dataset.id);
+    if(u && u.mode !== md.dataset.mode){ u.mode = md.dataset.mode; save(); render(); }
+    return;
+  }
+
   const re = e.target.closest("[data-repick]");
   if(re){ pickImage(re.dataset.repick); return; }
 
@@ -917,7 +992,10 @@ $("#aus").addEventListener("click", e => {
     return;
   }
   const slot = e.target.closest(".slot");
-  if(slot && !panMoved && !u.img) pickImage(slot.dataset.slot);
+  if(slot && !panMoved){
+    const t = panTarget(slot.dataset.slot);
+    if(t && !t.img) pickImage(slot.dataset.slot);
+  }
 });
 
 function addAu(){
@@ -995,7 +1073,7 @@ $("#picker").addEventListener("change", e => {
   if(!f || !pickTarget) return;
   const key = pickTarget;
   // localStorage에 들어갈 크기로 줄여서 담는다 — 가로세로 비율은 원본 그대로
-  shrink(f, key.indexOf("au:") === 0 ? 1000 : 480, data => {
+  shrink(f, key.indexOf("au:") === 0 ? 1000 : 560, data => {
     const t = panTarget(key);
     if(!t) return;
     t.img = data; t.iz = 1; t.ix = 0; t.iy = 0;
@@ -1025,7 +1103,7 @@ function shrink(file, maxW, cb){
    화면을 통째로 복제해 SVG(foreignObject) 안에서 다시 그린 뒤 캔버스로 굽는다.
    웹폰트는 그림 안으로 들어가지 못해 시스템 글꼴로 그려진다. */
 const EX_DROP = ".toolbar,.tools,.zoom,.zoomrow,.hint,.aufoot,.addau,.tips,.colorrow,.bubble .x" +
-                ",.stats,.tagline";   // 개수 칸과 안내 문구는 그림에 넣지 않는다
+                ",.stats,.tagline,.aumode .seg";   // 개수 칸·안내 문구·방식 단추는 그림에 넣지 않는다
 function exportPNG(){
   const src = $(".wrap");
   const W = Math.max(920, Math.ceil(src.getBoundingClientRect().width));
@@ -1137,8 +1215,13 @@ $("#copyBtn").addEventListener("click", () => {
   if(o.note.trim()) out += "> " + o.note.trim() + "\n";
   if(o.credit.trim()) out += "ⓒ " + o.credit.trim() + "\n";
   state.aus.forEach((u, i) => {
+    const shots = u.mode === "duo" ? (u.a.img ? 1 : 0) + (u.b.img ? 1 : 0) : u.mode === "one" && u.img ? 1 : 0;
     out += "\n## AU " + pad2(i + 1) + " · " + (u.title || "(이름 없음)") +
-           (u.tag ? "  " + u.tag : "") + (u.img ? "  🖼" : "") + "\n";
+           (u.tag ? "  " + u.tag : "") + (shots ? "  🖼" + (shots > 1 ? "×" + shots : "") : "") + "\n";
+    if(u.mode === "duo"){
+      if(u.ab.trim()) out += "- " + o.a.name + " → " + o.b.name + " : " + u.ab.trim() + "\n";
+      if(u.ba.trim()) out += "- " + o.b.name + " → " + o.a.name + " : " + u.ba.trim() + "\n";
+    }
     if(u.note.trim()) out += u.note.trim() + "\n";
     if(u.credit.trim()) out += "ⓒ " + u.credit.trim() + "\n";
   });
