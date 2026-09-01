@@ -275,8 +275,12 @@ input[type=range]::-moz-range-thumb{
 .seg.tiny button{padding:3px 8px;font-size:11px}
 
 /* 페어 방식 — 오리진처럼 두 장 + 가운데 화살표 */
-.aupair{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);gap:6px;padding:10px 10px 0;align-items:start}
-.aupair .pcol{display:flex;flex-direction:column;gap:4px;min-width:0}
+/* 화살표는 두 그림 사이 한가운데에 — 그림 칸은 위에서부터 채운다 */
+.aupair{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);gap:6px;padding:10px 10px 0;align-items:stretch}
+.aupair .pcol{display:flex;flex-direction:column;gap:4px;min-width:0;align-self:start}
+.aupair .bond{justify-content:center;align-self:stretch}
+/* 확대 슬라이더가 붙으면 그만큼 위로 올려 그림 한가운데에 맞춘다 */
+.aupair:has(.zoomrow) .bond{padding-bottom:18px}
 .slot.pair{
   width:100%;aspect-ratio:4/5;padding:0;background:var(--field);
   border:1px solid var(--rule-soft);border-radius:10px;touch-action:none;
